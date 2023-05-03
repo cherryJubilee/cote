@@ -10,14 +10,14 @@ max_bar_size = bar_stack[-1]
 count = 1  # 첫 번째 막대는 항상 보이니까
 
 
-for bar_size in bar_stack[::-1]:
-    if bar_size > max_bar_size:
-        max_bar_size = bar_size
-        count += 1
-
-# for bar_size in reversed(bar_stack):
+# for bar_size in bar_stack[::-1]:
 #     if bar_size > max_bar_size:
 #         max_bar_size = bar_size
 #         count += 1
+
+for bar_size in reversed(bar_stack):
+    if bar_size > max_bar_size:
+        max_bar_size = bar_size
+        count += 1
 
 print(count)
