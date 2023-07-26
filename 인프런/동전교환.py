@@ -7,7 +7,7 @@ def dfs(L, sum):
     if sum > m: 
         return
 
-    if sum == m:ㄴ
+    if sum == m:
         if L < res:
             res = L # 이 부분 떄문에 지역변수로
 
