@@ -1,3 +1,19 @@
+# 풀이 2 - library 이용 
+
+import itertools as it
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+m = int(input())
+cnt = 0
+
+for x in it.combinations(a, k): # 리스트a에서 k개씩 조합
+    if sum(x) % m == 0:
+        cnt += 1
+print(cnt)
+
+
+'''
+풀이 1
 def dfs(level, start, sum):
     global cnt
     # 종착지점
@@ -15,3 +31,4 @@ cnt = 0
 dfs(0,0,0) #(level, start, sum)
 
 print(cnt)
+'''
