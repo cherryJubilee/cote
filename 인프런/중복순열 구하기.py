@@ -12,7 +12,7 @@ def dfs(L):
 
     else:
        for i in range(1, n+1):
-        res[L] = if
+        res[L] = i
         dfs(L+1)
 
 
