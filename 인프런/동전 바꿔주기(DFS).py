@@ -1,5 +1,8 @@
 def dfs(level, sum):
     global cnt
+    # 커트 처리하기 (sum >20)
+    if sum > t:
+        return
     # 말단 노드이고, 여기까지의 합이 20(t) 라면 카운트 해줄것 
     if level == k: 
         if sum == t:
