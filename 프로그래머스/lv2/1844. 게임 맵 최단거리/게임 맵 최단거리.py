@@ -5,23 +5,29 @@ def solution(maps):
     dy = [0, 1, 0, -1]
     n = len(maps)
     m = len(maps[0])
-    distance = [[-1] * m for _ in range(n)] # distance 초기화 수정
-
+    distance = [[0] * m for _ in range(n)]  # 각 위치까지의 최소 거리를 저장할 배열
+    
     def bfs(x, y):
         Q = deque()
         Q.append((x, y))
-        distance[x][y] = 1 # 시작 위치의 거리를 1로 초기화
-
-        while Q: # 무한루프 수정
-            x, y = Q.popleft()
+        distance[x][y] = 1 # 시작 위치의 거리는 1
+        
+        while Q:  # 무한 루프 수정
+            tmp = Q.popleft()
             for i in range(4):
-                nx = x + dx[i]
-                ny = y + dy[i]
-                if 0 <= nx < n and 0 <= ny < m and maps[nx][ny] == 1:
-                    if distance[nx][ny] == -1: # 중복 방문 방지
-                        distance[nx][ny] = distance[x][y] + 1
-                        Q.append((nx, ny))
+                xx = tmp[0] + dx[i]
+                yy = tmp[1] + dy[i]
+                if 0 <= xx < n and 0 <= yy < m and maps[xx][yy] == 1:
+                    if distance[xx][yy] == 0:
+                        # 이전 위치의 거리 + 1을 저장
+                        distance[xx][yy] = distance[tmp[0]][tmp[1]] + 1
+                        # 큐에 새 위치를 추가
+                        Q.append((xx, yy))
+                    
         return distance[n-1][m-1] # 마지막 위치의 최소 거리를 반환
 
     answer = bfs(0, 0)
-    return answer if answer != -1 else -1 # 최종 결과 반환
+    if answer != 0:
+        return answer
+    else:
+        return -1
