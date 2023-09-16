@@ -1,4 +1,4 @@
-# 우범지역
+# 우범지역(DFS)
 
 def dfs(c, K, visited, graph, crime):
     visited[c] = True
