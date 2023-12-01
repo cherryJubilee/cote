@@ -1,32 +1,24 @@
+
 def dfs(level, sum):
     global cnt
-    # 커트 처리하기 (sum >20)
-    if sum > t:
+    if sum > T:
         return
-    # 말단 노드이고, 여기까지의 합이 20(t) 라면 카운트 해줄것 
-    if level == k: 
-        if sum == t:
-            cnt += 1
-
-    # 가지 그려주기
+    if level == K:
+        if sum == T:
+            cnt += 1 
     else:
-        for i in range(amount[level]+1):
-            dfs(level+1, sum + coins[level])
+        for i in range(count(level)+1): 
+            dfs(level+1, sum+coin[level]*i)
 
 
-t = int(input()) # 금액
-k  = int(input() ) # 동전 가지수
-
-coins = [] # 동전의 금액
-amount = [] # 동전의 개수
-for i in range(k):
-    p, n = map(int, input().split())
-    coins.append(p)
-    amount.append(p)
-
+T = int(input())
+K = int(input())
+coin = []
+count = []
+for _ in range(K):
+    a, b = map(int, input().split())
+    coin.append(a)
+    count.append(b)
 cnt = 0
-dfs(0, 0) # dfs(level, sum)
-
-# level은 동전의 금액을 말한다.
-# sum은 선택된 동전의 합
+dfs(0,0)
 print(cnt)

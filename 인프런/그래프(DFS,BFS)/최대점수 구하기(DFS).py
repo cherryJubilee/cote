@@ -1,32 +1,21 @@
-'''
-n: 문제 개수
-m: 제한 시간
-점수, 푸는데 걸리는 시간
-'''
-
-def dfs(level, sum, time): 
-    global answer
-    # 제한시간 m 을 넘어가면 안됨
+def dfs(level, sum, time):
+    global res
     if time > m:
         return
-    if level == n:
-        if sum > answer:
-            answer=sum
-    else:
-        # 문제를 푼 경우
-        dfs(level+1, sum+score[level], time+time[level])
-        # 문제를 풀지 않은 경우
+    if level == n:  # 부분집합 한개 완성 , 도착 지점인 경우
+        if sum > res:
+            res = sum
+    else: # 종착지가 아닌경우 -> 뻗어나가자 (문제를 푼자 or 문제를 풀지 않는다)
+        dfs(level+1, sum+pv[level], time+pm[level]) 
         dfs(level+1, sum, time)
 
 
+pv = list()
+pm = list()
 n, m = map(int, input().split())
-score = []
-time = []
-for i in range(n):
-    a, b = map(int, input().split())
-    score.append(a)
-    time.append(b)
-
-answer = 0
-dfs(0,0,0) #level, sum, time
-print(answer)
+for _ in range(n):
+    a, b= map(int, input().split())
+    pv.append(a)  # 점수
+    pm.append(b)  # 시간
+res = -99900
+dfs(0,0,0)  # 0번이 첫번째 문제

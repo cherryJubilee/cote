@@ -1,30 +1,28 @@
-
 def dfs(level, sum):
-    global answer
-    if level == n+1: # 절대 끝 지점을 넘어서는 안됨
-        if sum > answer:
-            answer = sum
+    global res
+    if level == n+1: #level은 인덱스이자 날짜이다.
+        if sum > res:
+            res = sum
     else:
-        if level + day[level] <= n+1:
-            # 상담 진행
-            dfs(level + day[level], sum + benefit[level])
-        # 다음 상담으로 건너 띄기
+        # 상담을 한 경우
+        if level + day[level] <= n+1:  # 이조건에 해당 되어야 가지를 뻗을 수 있다.
+            dfs(level+day[level], sum+cost[level])
+        # 상담을 하지 않은 경우
         dfs(level+1, sum)
-    
+
+
+        
 
 n = int(input())
 day = []
-benefit = []
-
-for i in range(n):
+cost = []
+for _ in range(n):
     a,b = map(int, input().split())
     day.append(a)
-    benefit.append(b)
-
-answer = 0
-# 상담날짜(인덱스 = day)가 0이 아니라 1부터 시작하게 하기 위해서
+    cost.append(b)
+res = -999999
+# 인덱스를 날짜로 사용하기 위해 1씩 미뤄줌
 day.insert(0,0)
-benefit.insert(0,0)
+cost.insert(0,0)
 dfs(1,0)
-
-print(answer)
+print(res)
