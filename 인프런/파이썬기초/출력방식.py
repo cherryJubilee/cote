@@ -89,4 +89,10 @@ for i in range(1, 11):
     if i % 2 == 0:
         continue # 짝수이면 출력 하지 마
     print(i)
-    
+'''
+1
+3
+5
+7
+9
+'''
