@@ -50,9 +50,9 @@ print()
 if all(x<50 for x in a):
     print("yes")
 else:
-    print("no")
+    print("no")  # no
 # any : 한개라도 참
 if any(x<20 for x in a):
     print("yes")
 else:
-    print("no")
+    print("no")  # yes
